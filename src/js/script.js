@@ -173,20 +173,21 @@
             // check if the option is not default
             if (!option.default) {
               // add option price to price variable
-              price = Number(thisProduct.priceElem.innerHTML) + option.price;
-              console.log(!option.default);
+              price += option.price;
+              // console.log(!option.default);
             }
             // check if the option is default
           } else if (option.default) {
             //   // reduce price variable
-            price = thisProduct.priceElem.innerHTML - option.price;
-            console.log(price);
+            price -= option.price;
+            // console.log(price);
           }
         }
       }
 
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
+      // console.log(price);
     }
   }
 
