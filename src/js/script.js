@@ -96,6 +96,9 @@
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       // console.log('priceElem:', this.priceElem);
 
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+      // console.log(thisProduct.imageWrapper);
+
       thisProduct.form.addEventListener('submit', function (event) {
         event.preventDefault();
         thisProduct.processOrder();
@@ -128,13 +131,13 @@
 
         /* if there is active product and it's not thisProduct.element, remove class active from it */
         for (let activeProduct of activeProducts) {
-          if (activeProduct !== thisProduct.element && activeProduct !== thisProduct.element) {
-            activeProduct.classList.remove('active');
+          if (activeProduct !== thisProduct.element) {
+            activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
           }
         }
 
         /* toggle active class on thisProduct.element */
-        thisProduct.element.classList.toggle('active');
+        thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
       });
     }
 
@@ -167,9 +170,10 @@
           const option = param.options[optionId];
           // console.log(formData[paramId]);
           // console.log(formData[paramId].includes(optionId));
+          const selected = formData[paramId] && formData[paramId].includes(optionId);
 
           // check if there is param with a name of paramId in formData and if it includes optionId
-          if (formData[paramId] && formData[paramId].includes(optionId)) {
+          if (selected) {
             // check if the option is not default
             if (!option.default) {
               // add option price to price variable
@@ -181,6 +185,15 @@
             //   // reduce price variable
             price -= option.price;
             // console.log(price);
+          }
+
+          const image = thisProduct.imageWrapper.querySelector(`.${paramId}-${optionId}`);
+          if (image) {
+            if (selected) {
+              image.classList.add(classNames.menuProduct.imageVisible);
+            } else {
+              image.classList.remove(classNames.menuProduct.imageVisible);
+            }
           }
         }
       }
