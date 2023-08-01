@@ -7,6 +7,7 @@
   const select = {
     templateOf: {
       menuProduct: '#template-menu-product',
+      cartProduct: '#template-cart-product', // CODE ADDED
     },
     containerOf: {
       menu: '#product-list',
@@ -27,11 +28,31 @@
     },
     widgets: {
       amount: {
-        input: 'input[name="amount"]',
+        input: 'input.amount', // CODE CHANGED
         linkDecrease: 'a[href="#less"]',
         linkIncrease: 'a[href="#more"]',
       },
     },
+    // CODE ADDED START
+    cart: {
+      productList: '.cart__order-summary',
+      toggleTrigger: '.cart__summary',
+      totalNumber: `.cart__total-number`,
+      totalPrice: '.cart__total-price strong, .cart__order-total .cart__order-price-sum strong',
+      subtotalPrice: '.cart__order-subtotal .cart__order-price-sum strong',
+      deliveryFee: '.cart__order-delivery .cart__order-price-sum strong',
+      form: '.cart__order',
+      formSubmit: '.cart__order [type="submit"]',
+      phone: '[name="phone"]',
+      address: '[name="address"]',
+    },
+    cartProduct: {
+      amountWidget: '.widget-amount',
+      price: '.cart__product-price',
+      edit: '[href="#edit"]',
+      remove: '[href="#remove"]',
+    },
+    // CODE ADDED END
   };
 
   const classNames = {
@@ -39,6 +60,11 @@
       wrapperActive: 'active',
       imageVisible: 'active',
     },
+    // CODE ADDED START
+    cart: {
+      wrapperActive: 'active',
+    },
+    // CODE ADDED END
   };
 
   const settings = {
@@ -46,11 +72,19 @@
       defaultValue: 1,
       defaultMin: 1,
       defaultMax: 9,
+    }, // CODE CHANGED
+    // CODE ADDED START
+    cart: {
+      defaultDeliveryFee: 20,
     },
+    // CODE ADDED END
   };
 
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
+    // CODE ADDED START
+    cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
+    // CODE ADDED END
   };
 
   class Product {
@@ -223,9 +257,11 @@
       // console.log('amoung Widget', thisWidget);
       // console.log('constructor element:', element);
       // console.log('-------------------------------');
+      thisWidget.value = settings.amountWidget.defaultValue;
 
       thisWidget.getElements(element);
       thisWidget.setValue(thisWidget.input.value);
+      console.log(thisWidget.input.value);
       thisWidget.initActions();
     }
 
@@ -242,12 +278,11 @@
       const thisWidget = this;
       const newValue = parseInt(value);
 
-      thisWidget.value = settings.amountWidget.defaultValue;
-      console.log('default value', thisWidget.value);
+      // thisWidget.value = settings.amountWidget.defaultValue;
 
       if (
         thisWidget.value !== newValue &&
-        !isNaN(value) &&
+        !isNaN(newValue) &&
         newValue <= settings.amountWidget.defaultMax + 1 &&
         newValue >= settings.amountWidget.defaultMin - 1
       ) {
@@ -279,6 +314,14 @@
       const event = new Event('updated');
       thisWidget.element.dispatchEvent(event);
     }
+  }
+
+  class Cart {
+    constructor() {}
+  }
+
+  class CartProduct {
+    constructor() {}
   }
 
   const app = {
