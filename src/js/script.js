@@ -416,13 +416,12 @@
         });
     }
 
-    remove(thisCartProduct) {
+    remove(cartProduct) {
       const thisCart = this;
-      const indexOfProduct = thisCart.products.indexOf(thisCartProduct);
-      thisCart.dom.productListEl = thisCart.dom.wrapper.querySelectorAll('.cart__order-summary > li');
+      const indexOfProduct = thisCart.products.indexOf(cartProduct);
 
       // remove from HTML
-      thisCart.dom.productListEl[indexOfProduct].remove();
+      cartProduct.dom.wrapper.remove();
 
       // remove from array thisCart.products
       thisCart.products.splice(indexOfProduct, 1);
