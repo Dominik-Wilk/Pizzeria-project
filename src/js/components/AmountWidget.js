@@ -2,62 +2,55 @@ import { select, settings } from '../settings.js';
 
 class AmountWidget {
   constructor(element) {
-    const thisWidget = this;
-    thisWidget.value = settings.amountWidget.defaultValue;
+    this.value = settings.amountWidget.defaultValue;
 
-    thisWidget.getElements(element);
-    thisWidget.setValue(thisWidget.input.value);
-    thisWidget.initActions();
+    this.getElements(element);
+    this.setValue(this.input.value);
+    this.initActions();
   }
 
   getElements(element) {
-    const thisWidget = this;
-
-    thisWidget.element = element;
-    thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
-    thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
-    thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+    this.element = element;
+    this.input = this.element.querySelector(select.widgets.amount.input);
+    this.linkDecrease = this.element.querySelector(select.widgets.amount.linkDecrease);
+    this.linkIncrease = this.element.querySelector(select.widgets.amount.linkIncrease);
   }
 
   setValue(value) {
-    const thisWidget = this;
     const newValue = parseInt(value);
 
     if (
-      thisWidget.value !== newValue &&
+      this.value !== newValue &&
       !isNaN(newValue) &&
       newValue <= settings.amountWidget.defaultMax + 1 &&
       newValue >= settings.amountWidget.defaultMin - 1
     ) {
-      thisWidget.value = newValue;
-      thisWidget.announce();
+      this.value = newValue;
+      this.announce();
     }
 
-    thisWidget.input.value = thisWidget.value;
+    this.input.value = this.value;
   }
 
   initActions() {
-    const thisWidget = this;
-
-    thisWidget.input.addEventListener('change', function () {
-      thisWidget.setValue(thisWidget.input.value);
+    this.input.addEventListener('change', () => {
+      this.setValue(this.input.value);
     });
-    thisWidget.linkDecrease.addEventListener('click', function (e) {
+    this.linkDecrease.addEventListener('click', e => {
       e.preventDefault();
-      thisWidget.setValue(thisWidget.value - 1);
+      this.setValue(this.value - 1);
     });
-    thisWidget.linkIncrease.addEventListener('click', function (e) {
+    this.linkIncrease.addEventListener('click', e => {
       e.preventDefault();
-      thisWidget.setValue(thisWidget.value + 1);
+      this.setValue(this.value + 1);
     });
   }
 
   announce() {
-    const thisWidget = this;
     const event = new CustomEvent('updated', {
       bubbles: true,
     });
-    thisWidget.element.dispatchEvent(event);
+    this.element.dispatchEvent(event);
   }
 }
 

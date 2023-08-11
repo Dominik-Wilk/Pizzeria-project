@@ -4,91 +4,79 @@ import AmountWidget from './AmountWidget.js';
 
 class Product {
   constructor(id, data) {
-    const thisProduct = this;
-
-    thisProduct.id = id;
-    thisProduct.data = data;
-    thisProduct.renderInMenu();
-    thisProduct.getElements();
-    thisProduct.initAccordion();
-    thisProduct.initOrderForm();
-    thisProduct.initAmountWidget();
-    thisProduct.processOrder();
+    this.id = id;
+    this.data = data;
+    this.renderInMenu();
+    this.getElements();
+    this.initAccordion();
+    this.initOrderForm();
+    this.initAmountWidget();
+    this.processOrder();
   }
 
   renderInMenu() {
-    const thisProduct = this;
-
-    const generatedHTML = templates.menuProduct(thisProduct.data);
-    thisProduct.element = utils.createDOMFromHTML(generatedHTML);
+    const generatedHTML = templates.menuProduct(this.data);
+    this.element = utils.createDOMFromHTML(generatedHTML);
 
     const menuContainer = document.querySelector(select.containerOf.menu);
 
-    menuContainer.appendChild(thisProduct.element);
+    menuContainer.appendChild(this.element);
   }
 
   getElements() {
-    const thisProduct = this;
-
-    thisProduct.dom = {
-      accordionTrigger: thisProduct.element.querySelector(select.menuProduct.clickable),
-      form: thisProduct.element.querySelector(select.menuProduct.form),
-      formInputs: thisProduct.element.querySelector(select.menuProduct.form).querySelectorAll(select.all.formInputs),
-      cartButton: thisProduct.element.querySelector(select.menuProduct.cartButton),
-      priceElem: thisProduct.element.querySelector(select.menuProduct.priceElem),
-      imageWrapper: thisProduct.element.querySelector(select.menuProduct.imageWrapper),
-      amountWidgetElem: thisProduct.element.querySelector(select.menuProduct.amountWidget),
+    this.dom = {
+      accordionTrigger: this.element.querySelector(select.menuProduct.clickable),
+      form: this.element.querySelector(select.menuProduct.form),
+      formInputs: this.element.querySelector(select.menuProduct.form).querySelectorAll(select.all.formInputs),
+      cartButton: this.element.querySelector(select.menuProduct.cartButton),
+      priceElem: this.element.querySelector(select.menuProduct.priceElem),
+      imageWrapper: this.element.querySelector(select.menuProduct.imageWrapper),
+      amountWidgetElem: this.element.querySelector(select.menuProduct.amountWidget),
     };
   }
 
   initAccordion() {
-    const thisProduct = this;
-
-    thisProduct.dom.accordionTrigger.addEventListener('click', function (event) {
+    this.dom.accordionTrigger.addEventListener('click', event => {
       event.preventDefault();
 
       const activeProducts = document.querySelectorAll(select.all.menuProductsActive);
 
       for (let activeProduct of activeProducts) {
-        if (activeProduct !== thisProduct.element) {
+        if (activeProduct !== this.element) {
           activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
         }
       }
 
-      thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
+      this.element.classList.toggle(classNames.menuProduct.wrapperActive);
     });
   }
 
   initOrderForm() {
-    const thisProduct = this;
-
-    thisProduct.dom.form.addEventListener('submit', function (event) {
+    this.dom.form.addEventListener('submit', event => {
       event.preventDefault();
-      thisProduct.processOrder();
+      this.processOrder();
     });
 
-    for (let input of thisProduct.dom.formInputs) {
-      input.addEventListener('change', function () {
-        thisProduct.processOrder();
+    for (let input of this.dom.formInputs) {
+      input.addEventListener('change', () => {
+        this.processOrder();
       });
     }
 
-    thisProduct.dom.cartButton.addEventListener('click', function (event) {
+    this.dom.cartButton.addEventListener('click', event => {
       event.preventDefault();
-      thisProduct.processOrder();
-      thisProduct.addToCart();
+      this.processOrder();
+      this.addToCart();
     });
   }
 
   processOrder() {
-    const thisProduct = this;
+    const formData = utils.serializeFormToObject(this.dom.form);
 
-    const formData = utils.serializeFormToObject(thisProduct.dom.form);
+    let price = this.data.price;
 
-    let price = thisProduct.data.price;
-
-    for (let paramId in thisProduct.data.params) {
-      const param = thisProduct.data.params[paramId];
+    for (let paramId in this.data.params) {
+      const param = this.data.params[paramId];
 
       for (let optionId in param.options) {
         const option = param.options[optionId];
@@ -102,7 +90,7 @@ class Product {
           price -= option.price;
         }
 
-        const image = thisProduct.dom.imageWrapper.querySelector(`.${paramId}-${optionId}`);
+        const image = this.dom.imageWrapper.querySelector(`.${paramId}-${optionId}`);
         if (image) {
           if (selected) {
             image.classList.add(classNames.menuProduct.imageVisible);
@@ -112,47 +100,39 @@ class Product {
         }
       }
     }
-    thisProduct.priceSingle = price;
+    this.priceSingle = price;
 
-    price *= thisProduct.amountWidget.value;
-    thisProduct.dom.priceElem.innerHTML = price;
+    price *= this.amountWidget.value;
+    this.dom.priceElem.innerHTML = price;
 
-    thisProduct.prepareCartProductParams();
+    this.prepareCartProductParams();
   }
 
   initAmountWidget() {
-    const thisProduct = this;
+    this.amountWidget = new AmountWidget(this.dom.amountWidgetElem);
 
-    thisProduct.amountWidget = new AmountWidget(thisProduct.dom.amountWidgetElem);
-
-    thisProduct.dom.amountWidgetElem.addEventListener('updated', function () {
-      thisProduct.processOrder();
+    this.dom.amountWidgetElem.addEventListener('updated', () => {
+      this.processOrder();
     });
   }
 
   addToCart() {
-    const thisProduct = this;
-
-    // app.cart.add(thisProduct.prepareCartProducts());
-
     const event = new CustomEvent('add-to-cart', {
       bubbles: true,
       detail: {
-        product: thisProduct,
+        product: this.prepareCartProducts(),
       },
     });
 
-    thisProduct.element.dispatchEvent(event);
+    this.element.dispatchEvent(event);
   }
 
   prepareCartProductParams() {
-    const thisProduct = this;
-
-    const formData = utils.serializeFormToObject(thisProduct.dom.form);
+    const formData = utils.serializeFormToObject(this.dom.form);
     const productParams = {};
 
-    for (let paramId in thisProduct.data.params) {
-      const param = thisProduct.data.params[paramId];
+    for (let paramId in this.data.params) {
+      const param = this.data.params[paramId];
 
       for (let optionId in param.options) {
         const option = param.options[optionId];
@@ -173,15 +153,13 @@ class Product {
   }
 
   prepareCartProducts() {
-    const thisProduct = this;
-
     const productSummary = {
-      id: thisProduct.id,
-      name: thisProduct.data.name,
-      amount: thisProduct.amountWidget.value,
-      priceSingle: thisProduct.priceSingle,
-      price: thisProduct.priceSingle * thisProduct.amountWidget.value,
-      params: thisProduct.prepareCartProductParams(),
+      id: this.id,
+      name: this.data.name,
+      amount: this.amountWidget.value,
+      priceSingle: this.priceSingle,
+      price: this.priceSingle * this.amountWidget.value,
+      params: this.prepareCartProductParams(),
     };
     return productSummary;
   }

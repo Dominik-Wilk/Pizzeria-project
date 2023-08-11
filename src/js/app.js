@@ -4,51 +4,43 @@ import Cart from './components/Cart.js';
 
 const app = {
   initData: function () {
-    const thisApp = this;
-
-    thisApp.data = {};
+    this.data = {};
     const url = settings.db.url + '/' + settings.db.products;
 
     fetch(url)
       .then(function (rawResponse) {
         return rawResponse.json();
       })
-      .then(function (parsedResponse) {
-        // save parsedResponse as thisApp.data.products
-        thisApp.data.products = parsedResponse;
-        // execute initMenu method
-        thisApp.initMenu();
+      .then(parsedResponse => {
+        this.data.products = parsedResponse;
+        this.initMenu();
       });
   },
 
   initMenu: function () {
-    const thisApp = this;
-
-    for (let productData in thisApp.data.products) {
-      new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
+    for (let productData in this.data.products) {
+      new Product(this.data.products[productData].id, this.data.products[productData]);
     }
   },
 
   init: function () {
-    const thisApp = this;
+    this.initData();
 
-    thisApp.initData();
-
-    thisApp.initCart();
+    this.initCart();
   },
 
   initCart() {
-    const thisApp = this;
-
     const cartElem = document.querySelector(select.containerOf.cart);
-    thisApp.cart = new Cart(cartElem);
+    this.cart = new Cart(cartElem);
 
-    thisApp.productList = document.querySelector(select.containerOf.menu);
+    this.productList = document.querySelector(select.containerOf.menu);
 
-    thisApp.productList.addEventListener('add-to-cart', function (event) {
+    this.productList.addEventListener('add-to-cart', function (event) {
       app.cart.add(event.detail.product);
     });
   },
 };
 
 app.init();
+
+export default app;
