@@ -106,7 +106,6 @@ class Booking {
     if (e.target.type === 'checkbox' && e.target.name === 'starter' && e.target.tagName === 'INPUT') {
       if (e.target.checked) {
         this.selectedStarters.push(e.target.value);
-        // console.log(e.target.value);
       } else {
         const index = this.selectedStarters.indexOf(e.target.value);
         this.selectedStarters.splice(index, 1);
@@ -141,19 +140,6 @@ class Booking {
     this.payload.phone = this.dom.phoneInput.value;
     this.payload.address = this.dom.addressInput.value;
 
-    // this.dom.optionsWrapper.addEventListener('click', e => {
-    //   if (e.target.type === 'checkbox' && e.target.name === 'starter' && e.target.tagName === 'INPUT') {
-    //     if (e.target.checked) {
-    //       this.selectedStarters.push(e.target.value);
-    //       console.log(e.target.value);
-    //       console.log(this.payload.starters);
-    //     } else {
-    //       const index = this.selectedStarters.indexOf(e.target.value);
-    //       this.payload.starters.splice(index, 1);
-    //     }
-    //   }
-    // });
-
     const options = {
       method: 'POST',
       headers: {
@@ -167,8 +153,10 @@ class Booking {
         return response.json();
       })
       .then(parsedResponse => {
-        console.log('parsedResponse', parsedResponse);
+        console.log(parsedResponse);
+        alert('Your booking was sent to restaurant. Thank you for your booking. ');
         this.makeBooked(this.payload.date, this.payload.hour, this.payload.duration, this.payload.table);
+        this.updateDOM();
       });
   }
 
@@ -214,9 +202,8 @@ class Booking {
       this.selectStarters(e);
     });
 
-    // this.dom.bookTable.addEventListener('click', this.sendBooking);
-
-    this.dom.bookTable.addEventListener('click', () => {
+    this.dom.bookTable.addEventListener('click', e => {
+      e.preventDefault();
       this.sendBooking();
     });
   }
