@@ -15,7 +15,7 @@ class Booking {
 
   getData() {
     const startDateParam = settings.db.dateStartParamKey + '=' + utils.dateToStr(this.dateWidget.minDate);
-    const endDateParam = settings.db.dateStartParamKey + '=' + utils.dateToStr(this.dateWidget.maxDate);
+    const endDateParam = settings.db.dateEndParamKey + '=' + utils.dateToStr(this.dateWidget.maxDate);
 
     const params = {
       booking: [startDateParam, endDateParam],
