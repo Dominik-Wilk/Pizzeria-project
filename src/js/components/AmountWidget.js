@@ -6,7 +6,7 @@ class AmountWidget extends BaseWidget {
 
     this.getElements(element);
     this.initActions();
-    this.dom.input.value = settings.amountWidget.defaultValue;
+    this.renderValue();
   }
 
   getElements() {
