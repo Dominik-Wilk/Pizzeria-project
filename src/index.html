@@ -8,9 +8,13 @@
   <title>Pizzeria</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext"
     rel="stylesheet">
-  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/29410186e4.js" crossorigin="anonymous"></script>
+
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+  <link rel="stylesheet" href="./vendor/flickity.css">
 
   <link rel="stylesheet" href="./vendor/range-slider.min.css">
 
@@ -27,6 +31,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+          <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -68,6 +73,118 @@
   </header>
 
   <div id="pages">
+
+    <section id="home">
+      <div class=" home-wrapper container">
+        <div class="home-widget">
+          <div class="home-boxes">
+            <a href="#/order" class="box box--left">
+              <p class="box-text">order online </p>
+            </a>
+            <a href="#/booking" class="box box--right">
+              <p class="box-text">book a table</p>
+            </a>
+            <div class="box-down">
+              <p class="information">opening hours:</p>
+              <p class="data">tue-sun, 12pm-12am</p>
+            </div>
+          </div>
+
+
+          <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": true }'>
+            <div class="carousel-cell">
+              <div class="carousel-opinion">
+                <img class="carousel-opinion-img"
+                  src="https://cdn.pixabay.com/photo/2014/06/10/15/47/pizza-366111_1280.jpg" alt="pizza">
+                <div class="carousel-opinion-texts">
+                  <h2 class="carousel-opinion-texts-title">Best service!</h2>
+                  <p class="carousel-opinion-texts-description"> I have eaten at many pizzerias, but this one was
+                    exceptional. The service was extremely polite, and the food was delicious. The waiters
+                    made sure we had everything we needed. I definitely recommend this pizzeria to
+                    everyone.</p>
+                  <p class="carousel-opinion-texts-signature">- Tommy </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-cell">
+              <div class="carousel-opinion">
+                <img class="carousel-opinion-img"
+                  src="https://cdn.pixabay.com/photo/2018/10/24/08/35/pizza-3769787_1280.jpg" alt="sss">
+                <div class="carousel-opinion-texts">
+                  <h2 class="carousel-opinion-texts-title">Delicious pizza!</h2>
+                  <p class="carousel-opinion-texts-description">I recently tried a truly delicious pizza. The crust was
+                    crispy, the toppings were fresh and flavorful, and the cheese was melted to perfection. I highly
+                    recommend this pizza for a tasty and satisfying meal</p>
+                  <p class="carousel-opinion-texts-signature">- Katty</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-cell">
+              <div class="carousel-opinion">
+                <img class="carousel-opinion-img"
+                  src="https://cdn.pixabay.com/photo/2017/01/22/19/20/pizza-2000615_1280.jpg" alt="pizza ">
+                <div class="carousel-opinion-texts">
+                  <h2 class="carousel-opinion-texts-title">The biggest one!</h2>
+                  <p class="carousel-opinion-texts-description">I tried here the biggest pizza I have ever seen. It
+                    was
+                    massive and had generous toppings. The crust was perfectly cooked and every bite was full of flavor.
+                    It was a fun experience to share with friends and I recommend it for a memorable meal.</p>
+                  <p class="carousel-opinion-texts-signature">- Dom</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="home-gallery">
+            <div class="photo-box"><img src="images/assets/pizza-1.jpg" alt="" class="photo">
+              <div class="background-shadow"></div>
+              <div class="icon-shadow">
+                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-share-nodes"></i>
+              </div>
+            </div>
+            <div class="photo-box"><img src="images/assets/pizza-2.jpg" alt="" class="photo">
+              <div class="background-shadow"></div>
+              <div class="icon-shadow">
+                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-share-nodes"></i>
+              </div>
+            </div>
+            <div class="photo-box"><img src="images/assets/pizza-8.jpg" alt="" class="photo">
+              <div class="background-shadow"></div>
+              <div class="icon-shadow">
+                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-share-nodes"></i>
+              </div>
+            </div>
+            <div class="photo-box"><img src="images/assets/pizza-4.jpg" alt="" class="photo">
+              <div class="background-shadow"></div>
+              <div class="icon-shadow">
+                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-share-nodes"></i>
+              </div>
+            </div>
+            <div class="photo-box"><img src="images/assets/pizza-5.jpg" alt="" class="photo">
+              <div class="background-shadow"></div>
+              <div class="icon-shadow">
+                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-share-nodes"></i>
+              </div>
+            </div>
+            <div class="photo-box"><img src="images/assets/pizza-6.jpg" alt="" class="photo">
+              <div class="background-shadow"></div>
+              <div class="icon-shadow">
+                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-share-nodes"></i>
+              </div>
+            </div>
+
+          </div>
+          <a class="instagram-link" href="https://www.instagram.com/">View more on Instagram</a>
+        </div>
+      </div>
+    </section>
+
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -252,7 +369,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="./vendor/range-slider.min.js"></script>
-
+  <script src="./vendor/flickity.pkgd.js"></script>
   <script src="js/app.js" type="module"></script>
 </body>
 
