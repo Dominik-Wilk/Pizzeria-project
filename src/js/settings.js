@@ -48,7 +48,7 @@ export const select = {
     options: '.booking-options',
   },
   nav: {
-    links: '.main-nav a',
+    links: '.nav a',
   },
   cart: {
     productList: '.cart__order-summary',

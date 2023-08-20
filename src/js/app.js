@@ -51,24 +51,6 @@ const app = {
     }
   },
 
-  handlerBtns: function () {
-    const homePage = document.querySelector('#home');
-    const homeLink = document.querySelector('#homeLink');
-
-    document.querySelector('.box--left').addEventListener('click', function () {
-      document.querySelector('#order').classList.add('active');
-      document.querySelector('#orderLink').classList.add('active');
-      homePage.classList.remove('active');
-      homeLink.classList.remove('active');
-    });
-    document.querySelector('.box--right').addEventListener('click', function () {
-      document.querySelector('#booking').classList.add('active');
-      document.querySelector('#bookingLink').classList.add('active');
-      homePage.classList.remove('active');
-      homeLink.classList.remove('active');
-    });
-  },
-
   initData: function () {
     this.data = {};
     const url = settings.db.url + '/' + settings.db.products;
@@ -94,7 +76,6 @@ const app = {
     this.initPages();
     this.initCart();
     this.initBooking();
-    this.handlerBtns();
   },
 
   initCart() {
