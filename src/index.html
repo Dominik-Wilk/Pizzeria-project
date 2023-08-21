@@ -75,125 +75,128 @@
   <div id="pages">
 
     <section id="home">
-      <div class=" home-wrapper container">
-        <div class="home-widget">
-          <div class="home-boxes nav">
-            <a href="#order" class="box box--left">
-              <p class="box-text">order online </p>
-              <p class="text-hidden">Delicious food delivered to your door</p>
-            </a>
-            <a href="#booking" class="box box--right">
-              <p class="box-text">book a table</p>
-              <p class="text-hidden">Make sure that your seat is reserved for you</p>
-            </a>
-            <div class="box-down">
-              <p class="information">opening hours:</p>
-              <p class="data">tue-sun, 12pm-12am</p>
-            </div>
-          </div>
-
-
-          <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": true }'>
-            <div class="carousel-cell">
-              <div class="carousel-opinion">
-                <img class="carousel-opinion-img"
-                  src="https://cdn.pixabay.com/photo/2014/06/10/15/47/pizza-366111_1280.jpg" alt="pizza">
-                <div class="carousel-opinion-texts">
-                  <h2 class="carousel-opinion-texts-title">Best service!</h2>
-                  <p class="carousel-opinion-texts-description"> I have eaten at many pizzerias, but this one was
-                    exceptional. The service was extremely polite, and the food was delicious. The waiters
-                    made sure we had everything we needed. I definitely recommend this pizzeria to
-                    everyone.</p>
-                  <p class="carousel-opinion-texts-signature">- Tommy </p>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-cell">
-              <div class="carousel-opinion">
-                <img class="carousel-opinion-img"
-                  src="https://cdn.pixabay.com/photo/2018/10/24/08/35/pizza-3769787_1280.jpg" alt="sss">
-                <div class="carousel-opinion-texts">
-                  <h2 class="carousel-opinion-texts-title">Delicious pizza!</h2>
-                  <p class="carousel-opinion-texts-description">I recently tried a truly delicious pizza. The crust was
-                    crispy, the toppings were fresh and flavorful, and the cheese was melted to perfection. I highly
-                    recommend this pizza for a tasty and satisfying meal</p>
-                  <p class="carousel-opinion-texts-signature">- Katty</p>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-cell">
-              <div class="carousel-opinion">
-                <img class="carousel-opinion-img"
-                  src="https://cdn.pixabay.com/photo/2017/01/22/19/20/pizza-2000615_1280.jpg" alt="pizza ">
-                <div class="carousel-opinion-texts">
-                  <h2 class="carousel-opinion-texts-title">The biggest one!</h2>
-                  <p class="carousel-opinion-texts-description">I tried here the biggest pizza I have ever seen. It
-                    was
-                    massive and had generous toppings. The crust was perfectly cooked and every bite was full of flavor.
-                    It was a fun experience to share with friends and I recommend it for a memorable meal.</p>
-                  <p class="carousel-opinion-texts-signature">- Dom</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="home-gallery">
-            <div class="photo-box"><img src="images/assets/pizza-3.jpg" alt="" class="photo">
-              <div class="background-shadow"></div>
-              <div class="icon-shadow">
-                <i class="fa-solid fa-heart"></i>
-                <i class="fa-solid fa-share-nodes"></i>
-              </div>
-            </div>
-            <div class="photo-box"><img src="images/assets/pizza-7.jpg" alt="" class="photo">
-              <div class="background-shadow"></div>
-              <div class="icon-shadow">
-                <i class="fa-solid fa-heart"></i>
-                <i class="fa-solid fa-share-nodes"></i>
-              </div>
-            </div>
-            <div class="photo-box"><img src="images/assets/pizza-8.jpg" alt="" class="photo">
-              <div class="background-shadow"></div>
-              <div class="icon-shadow">
-                <i class="fa-solid fa-heart"></i>
-                <i class="fa-solid fa-share-nodes"></i>
-              </div>
-            </div>
-            <div class="photo-box"><img src="images/assets/pizza-4.jpg" alt="" class="photo">
-              <div class="background-shadow"></div>
-              <div class="icon-shadow">
-                <i class="fa-solid fa-heart"></i>
-                <i class="fa-solid fa-share-nodes"></i>
-              </div>
-            </div>
-            <div class="photo-box"><img src="images/assets/pizza-5.jpg" alt="" class="photo">
-              <div class="background-shadow"></div>
-              <div class="icon-shadow">
-                <i class="fa-solid fa-heart"></i>
-                <i class="fa-solid fa-share-nodes"></i>
-              </div>
-            </div>
-            <div class="photo-box"><img src="images/assets/pizza-6.jpg" alt="" class="photo">
-              <div class="background-shadow"></div>
-              <div class="icon-shadow">
-                <i class="fa-solid fa-heart"></i>
-                <i class="fa-solid fa-share-nodes"></i>
-              </div>
-            </div>
-
-          </div>
-          <a class="instagram-link" href="https://www.instagram.com/">View more on Instagram</a>
-        </div>
-      </div>
+      <div class=" home-wrapper container"></div>
     </section>
 
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
+
     <section id="booking">
       <div class="booking-wrapper container"></div>
     </section>
   </div>
+
+  <script id="template-home-page" type="text/x-handlebars-template">
+    <div class="home-widget">
+      <div class="home-boxes nav">
+        <a href="#order" class="box box--left">
+          <p class="box-text">order online </p>
+          <p class="text-hidden">Delicious food delivered to your door</p>
+        </a>
+        <a href="#booking" class="box box--right">
+          <p class="box-text">book a table</p>
+          <p class="text-hidden">Make sure that your seat is reserved for you</p>
+        </a>
+        <div class="box-down">
+          <p class="information">opening hours:</p>
+          <p class="data">tue-sun, 12pm-12am</p>
+        </div>
+      </div>
+
+
+      <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": true }'>
+        <div class="carousel-cell">
+          <div class="carousel-opinion">
+            <img class="carousel-opinion-img"
+              src="https://cdn.pixabay.com/photo/2014/06/10/15/47/pizza-366111_1280.jpg" alt="pizza">
+            <div class="carousel-opinion-texts">
+              <h2 class="carousel-opinion-texts-title">Best service!</h2>
+              <p class="carousel-opinion-texts-description"> I have eaten at many pizzerias, but this one was
+                exceptional. The service was extremely polite, and the food was delicious. The waiters
+                made sure we had everything we needed. I definitely recommend this pizzeria to
+                everyone.</p>
+              <p class="carousel-opinion-texts-signature">- Tommy </p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <div class="carousel-opinion">
+            <img class="carousel-opinion-img"
+              src="https://cdn.pixabay.com/photo/2018/10/24/08/35/pizza-3769787_1280.jpg" alt="sss">
+            <div class="carousel-opinion-texts">
+              <h2 class="carousel-opinion-texts-title">Delicious pizza!</h2>
+              <p class="carousel-opinion-texts-description">I recently tried a truly delicious pizza. The crust was
+                crispy, the toppings were fresh and flavorful, and the cheese was melted to perfection. I highly
+                recommend this pizza for a tasty and satisfying meal</p>
+              <p class="carousel-opinion-texts-signature">- Katty</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <div class="carousel-opinion">
+            <img class="carousel-opinion-img"
+              src="https://cdn.pixabay.com/photo/2017/01/22/19/20/pizza-2000615_1280.jpg" alt="pizza ">
+            <div class="carousel-opinion-texts">
+              <h2 class="carousel-opinion-texts-title">The biggest one!</h2>
+              <p class="carousel-opinion-texts-description">I tried here the biggest pizza I have ever seen. It
+                was
+                massive and had generous toppings. The crust was perfectly cooked and every bite was full of flavor.
+                It was a fun experience to share with friends and I recommend it for a memorable meal.</p>
+              <p class="carousel-opinion-texts-signature">- Dom</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-gallery">
+        <div class="photo-box"><img src="images/assets/pizza-3.jpg" alt="" class="photo">
+          <div class="background-shadow"></div>
+          <div class="icon-shadow">
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-share-nodes"></i>
+          </div>
+        </div>
+        <div class="photo-box"><img src="images/assets/pizza-7.jpg" alt="" class="photo">
+          <div class="background-shadow"></div>
+          <div class="icon-shadow">
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-share-nodes"></i>
+          </div>
+        </div>
+        <div class="photo-box"><img src="images/assets/pizza-8.jpg" alt="" class="photo">
+          <div class="background-shadow"></div>
+          <div class="icon-shadow">
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-share-nodes"></i>
+          </div>
+        </div>
+        <div class="photo-box"><img src="images/assets/pizza-4.jpg" alt="" class="photo">
+          <div class="background-shadow"></div>
+          <div class="icon-shadow">
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-share-nodes"></i>
+          </div>
+        </div>
+        <div class="photo-box"><img src="images/assets/pizza-5.jpg" alt="" class="photo">
+          <div class="background-shadow"></div>
+          <div class="icon-shadow">
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-share-nodes"></i>
+          </div>
+        </div>
+        <div class="photo-box"><img src="images/assets/pizza-6.jpg" alt="" class="photo">
+          <div class="background-shadow"></div>
+          <div class="icon-shadow">
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-share-nodes"></i>
+          </div>
+        </div>
+
+      </div>
+      <a class="instagram-link" href="https://www.instagram.com/">View more on Instagram</a>
+    </div>
+  </script>
 
   <script id="template-cart-product" type="text/x-handlebars-template">
     <li>
