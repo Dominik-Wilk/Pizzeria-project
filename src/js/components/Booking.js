@@ -185,8 +185,8 @@ class Booking {
   }
 
   initWidgets() {
-    this.peopleWidget = new AmountWidget(this.dom.peopleAmount);
-    this.hoursWidget = new AmountWidget(this.dom.hoursAmount);
+    this.peopleWidget = new AmountWidget(this.dom.peopleAmount, settings.amountWidget.defaultValue);
+    this.hoursWidget = new AmountWidget(this.dom.hoursAmount, settings.amountWidget.defaultValue);
     this.dateWidget = new DatePicker(this.dom.datePicker);
     this.timeWidget = new HourPicker(this.dom.hourPicker);
 

@@ -1,12 +1,14 @@
 import { select, settings } from '../settings.js';
 import BaseWidget from './BaseWidget.js';
 class AmountWidget extends BaseWidget {
-  constructor(element) {
+  constructor(element, number) {
     super(element, settings.amountWidget.defaultValue);
 
     this.getElements(element);
     this.initActions();
     this.renderValue();
+
+    this.dom.input.value = number;
   }
 
   getElements() {
