@@ -6,7 +6,6 @@ class AmountWidget extends BaseWidget {
 
     this.getElements(element);
     this.initActions();
-    this.renderValue();
 
     this.dom.input.value = number;
   }
@@ -26,15 +25,15 @@ class AmountWidget extends BaseWidget {
 
   initActions() {
     this.dom.input.addEventListener('change', () => {
-      this.setValue(this.dom.input.value);
+      this.setValue(+this.dom.input.value);
     });
     this.dom.linkDecrease.addEventListener('click', e => {
       e.preventDefault();
-      this.setValue(this.value - 1);
+      this.setValue(+this.dom.input.value - 1);
     });
     this.dom.linkIncrease.addEventListener('click', e => {
       e.preventDefault();
-      this.setValue(this.value + 1);
+      this.setValue(+this.dom.input.value + 1);
     });
   }
 }
