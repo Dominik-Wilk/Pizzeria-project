@@ -5,8 +5,8 @@ import { select, settings } from '../settings.js';
 class DatePicker extends BaseWidget {
   constructor(wrapper) {
     super(wrapper, utils.dateToStr(new Date()));
-
     this.dom.input = this.dom.wrapper.querySelector(select.widgets.datePicker.input);
+
     this.initPlugin();
   }
   initPlugin() {
