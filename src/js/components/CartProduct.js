@@ -19,7 +19,9 @@ class CartProduct {
     this.dom = {};
 
     this.dom.wrapper = element;
-    this.dom.amountWidget = element.querySelector(select.cartProduct.amountWidget);
+    this.dom.amountWidget = element.querySelector(
+      select.cartProduct.amountWidget
+    );
     this.dom.price = element.querySelector(select.cartProduct.price);
     this.dom.edit = element.querySelector(select.cartProduct.edit);
     this.dom.remove = element.querySelector(select.cartProduct.remove);

@@ -2,7 +2,6 @@ class BaseWidget {
   constructor(wrapperElement, initialValue) {
     this.dom = {};
     this.dom.wrapper = wrapperElement;
-
     this.correctValue = initialValue;
   }
 

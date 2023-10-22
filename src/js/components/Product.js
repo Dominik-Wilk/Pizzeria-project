@@ -25,13 +25,19 @@ class Product {
 
   getElements() {
     this.dom = {
-      accordionTrigger: this.element.querySelector(select.menuProduct.clickable),
+      accordionTrigger: this.element.querySelector(
+        select.menuProduct.clickable
+      ),
       form: this.element.querySelector(select.menuProduct.form),
-      formInputs: this.element.querySelector(select.menuProduct.form).querySelectorAll(select.all.formInputs),
+      formInputs: this.element
+        .querySelector(select.menuProduct.form)
+        .querySelectorAll(select.all.formInputs),
       cartButton: this.element.querySelector(select.menuProduct.cartButton),
       priceElem: this.element.querySelector(select.menuProduct.priceElem),
       imageWrapper: this.element.querySelector(select.menuProduct.imageWrapper),
-      amountWidgetElem: this.element.querySelector(select.menuProduct.amountWidget),
+      amountWidgetElem: this.element.querySelector(
+        select.menuProduct.amountWidget
+      ),
     };
   }
 
@@ -39,7 +45,9 @@ class Product {
     this.dom.accordionTrigger.addEventListener('click', event => {
       event.preventDefault();
 
-      const activeProducts = document.querySelectorAll(select.all.menuProductsActive);
+      const activeProducts = document.querySelectorAll(
+        select.all.menuProductsActive
+      );
 
       for (let activeProduct of activeProducts) {
         if (activeProduct !== this.element) {
@@ -80,7 +88,8 @@ class Product {
 
       for (let optionId in param.options) {
         const option = param.options[optionId];
-        const selected = formData[paramId] && formData[paramId].includes(optionId);
+        const selected =
+          formData[paramId] && formData[paramId].includes(optionId);
 
         if (selected) {
           if (!option.default) {
@@ -90,7 +99,9 @@ class Product {
           price -= option.price;
         }
 
-        const image = this.dom.imageWrapper.querySelector(`.${paramId}-${optionId}`);
+        const image = this.dom.imageWrapper.querySelector(
+          `.${paramId}-${optionId}`
+        );
         if (image) {
           if (selected) {
             image.classList.add(classNames.menuProduct.imageVisible);
@@ -109,7 +120,10 @@ class Product {
   }
 
   initAmountWidget() {
-    this.amountWidget = new AmountWidget(this.dom.amountWidgetElem, settings.amountWidget.defaultValue);
+    this.amountWidget = new AmountWidget(
+      this.dom.amountWidgetElem,
+      settings.amountWidget.defaultValue
+    );
 
     this.dom.amountWidgetElem.addEventListener('updated', () => {
       this.processOrder();
@@ -123,7 +137,6 @@ class Product {
         product: this.prepareCartProducts(),
       },
     });
-
     this.element.dispatchEvent(event);
   }
 
@@ -136,7 +149,8 @@ class Product {
 
       for (let optionId in param.options) {
         const option = param.options[optionId];
-        const selected = formData[paramId] && formData[paramId].includes(optionId);
+        const selected =
+          formData[paramId] && formData[paramId].includes(optionId);
 
         if (selected) {
           if (!productParams[paramId]) {

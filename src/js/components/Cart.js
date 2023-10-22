@@ -5,7 +5,6 @@ import CartProduct from './CartProduct.js';
 class Cart {
   constructor(element) {
     this.products = [];
-
     this.getElements(element);
     this.initActions();
   }
@@ -33,8 +32,6 @@ class Cart {
 
     this.dom.toggleTrigger.addEventListener('click', () => {
       this.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
-
-      // extra functionality ;)
       angle += 180;
       this.dom.arrow.style.setProperty('transform', `rotate(${angle}deg)`);
       this.dom.arrow.style.setProperty('transition', 'transform 0.5s');

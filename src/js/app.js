@@ -27,13 +27,8 @@ const app = {
 
         e.preventDefault();
 
-        // get page id from HREF attribute
-
         const id = clickedElement.getAttribute('href').replace('#', '');
-        // run this.activatePage with that id
         this.activatePage(id);
-
-        // change URL hash
 
         window.location.hash = `#/${id}`;
       });
@@ -41,14 +36,15 @@ const app = {
   },
 
   activatePage: function (pageId) {
-    // add class "active" to matchinh pages, remove from non-matching
     for (let page of this.pages) {
       page.classList.toggle(classNames.pages.active, page.id === pageId);
     }
 
-    // add class "active" to matchinh links, remove from non-matching
     for (let link of this.navLinks) {
-      link.classList.toggle(classNames.nav.active, link.getAttribute('href') === `#${pageId}`);
+      link.classList.toggle(
+        classNames.nav.active,
+        link.getAttribute('href') === `#${pageId}`
+      );
     }
   },
 
@@ -68,7 +64,10 @@ const app = {
 
   initMenu: function () {
     for (let productData in this.data.products) {
-      new Product(this.data.products[productData].id, this.data.products[productData]);
+      new Product(
+        this.data.products[productData].id,
+        this.data.products[productData]
+      );
     }
   },
 
